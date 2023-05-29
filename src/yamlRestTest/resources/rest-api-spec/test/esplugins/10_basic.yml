@@ -1,0 +1,14 @@
+# Integration tests for Korean analysis components
+#
+---
+"Analyzer":
+  - do:
+      indices.analyze:
+        body:
+          text:       뿌리가 깊은 나무
+          tokenizer:  standard
+          filter:     [chosung]
+  - length: { tokens: 3 }
+  - match:  { tokens.0.token: ㅃㄹㄱ }
+  - match:  { tokens.1.token: ㄱㅇ }
+  - match:  { tokens.2.token: ㄴㅁ }
