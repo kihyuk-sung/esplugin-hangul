@@ -1,0 +1,41 @@
+buildscript {
+    ext {
+        elasticsearchVersion = "7.17.8"
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath("org.elasticsearch.gradle:build-tools:${elasticsearchVersion}")
+    }
+}
+
+apply plugin: 'elasticsearch.esplugin'
+
+repositories {
+    mavenCentral()
+}
+
+esplugin {
+    name 'jamo'
+    version '1.0.0'
+    description 'ES plugin'
+    classname 'org.example.es.plugins.ESPlugins'
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
+    testImplementation 'org.assertj:assertj-core:3.24.2'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
