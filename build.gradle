@@ -19,7 +19,7 @@ repositories {
 }
 
 esplugin {
-    name 'jamo'
+    name 'esplugin'
     version '1.0.0'
     description 'ES plugin'
     classname 'org.example.es.plugins.ESPlugins'
