@@ -22,8 +22,9 @@ public class TokenConvertFilter extends TokenFilter {
             return false;
         }
 
+        final CharSequence converted = tokenConvert.convert(termAttr);
         termAttr.setEmpty();
-        termAttr.append(tokenConvert.convert(termAttr));
+        termAttr.append(converted);
         return true;
     }
 }
