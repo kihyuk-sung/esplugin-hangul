@@ -1,11 +1,11 @@
 package org.example.es.plugins.jamo;
 
-import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
-public class JamoConvertTest {
+class JamoConvertTest {
 
     private final JamoConvert jamoConvert = new JamoConvert();
 
