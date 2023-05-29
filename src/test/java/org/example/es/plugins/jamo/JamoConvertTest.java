@@ -28,9 +28,13 @@ public class JamoConvertTest {
     @Test
     @DisplayName("Hangul Syllables인 경우 자모를 분리한다.")
     public void convertIfHangulSyllables() {
-        final String target = "가나다라마배";
-
-        assertEquals(jamoConvert.convert(target), "ㄱㅏㄴㅏㄷㅏㅁㅏㅂㅐ");
+        assertEquals(jamoConvert.convert("가나다라마배"), "ㄱㅏㄴㅏㄷㅏㄹㅏㅁㅏㅂㅐ");
+        assertEquals(jamoConvert.convert("닭장"), "ㄷㅏㄺㅈㅏㅇ");
+        assertEquals(jamoConvert.convert("의류"), "ㅇㅢㄹㅠ");
+        assertEquals(jamoConvert.convert("왜외웨의"), "ㅇㅙㅇㅚㅇㅞㅇㅢ");
+        assertEquals(jamoConvert.convert("의류"), "ㅇㅢㄹㅠ");
+        assertEquals(jamoConvert.convert("땅값"), "ㄸㅏㅇㄱㅏㅄ");
+        assertEquals(jamoConvert.convert("랆"), "ㄹㅏㄻ");
     }
 
     private void assertEquals(CharSequence actual, CharSequence expected) {
