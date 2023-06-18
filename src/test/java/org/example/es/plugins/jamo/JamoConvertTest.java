@@ -1,5 +1,7 @@
 package org.example.es.plugins.jamo;
 
+import org.example.es.plugins.common.TokenConvert;
+import org.example.es.plugins.common.TokenConvertBase;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -7,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class JamoConvertTest {
 
-    private final JamoConvert jamoConvert = new JamoConvert();
+    private final TokenConvert jamoConvert = new TokenConvertBase(new JamoConvertIterator());
 
     @Test
     @DisplayName("한글이 아닌 경우 변환하지 않는다.")
