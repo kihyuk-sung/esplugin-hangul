@@ -27,3 +27,35 @@
   - match:  { tokens.4.token: ㅉㅏㄼㄷㅏ }
   - match:  { tokens.5.token: ㅂㅏㄼㄷㅏ }
   - match:  { tokens.6.token: ㅇㅡㄿㄷㅏ }
+
+---
+"Split Jamo":
+  - do:
+      indices.analyze:
+        body:
+          text:       ㅃㅜㄹㅣㄱㅏ ㅇㅞㅂㅣㄴㅏ ㅉㅏㄼㄷㅏ ㅇㅡㄿㄷㅏ
+          tokenizer:  standard
+          filter:     [split-jamo]
+  - length: { tokens: 4 }
+  - match:  { tokens.0.token: ㅃㅜㄹㅣㄱㅏ }
+  - match:  { tokens.1.token: ㅇㅜㅔㅂㅣㄴㅏ }
+  - match:  { tokens.2.token: ㅉㅏㄹㅂㄷㅏ }
+  - match:  { tokens.3.token: ㅇㅡㄹㅍㄷㅏ }
+
+---
+"Suggest Hangul":
+  - do:
+      indices.analyze:
+        body:
+          text:       뿌리가 웨비나 짧다 읊다
+          tokenizer:  standard
+          filter:
+            - jamo
+            - split-jamo
+#            - type: edge_ngram
+#              max_ngram: 10
+  - length: { tokens: 4 }
+  - match:  { tokens.0.token: ㅃㅜㄹㅣㄱㅏ }
+  - match:  { tokens.1.token: ㅇㅜㅔㅂㅣㄴㅏ }
+  - match:  { tokens.2.token: ㅉㅏㄹㅂㄷㅏ }
+  - match:  { tokens.3.token: ㅇㅡㄹㅍㄷㅏ }

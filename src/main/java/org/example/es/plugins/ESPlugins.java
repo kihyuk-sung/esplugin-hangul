@@ -5,6 +5,7 @@ import org.elasticsearch.indices.analysis.AnalysisModule;
 import org.elasticsearch.plugins.AnalysisPlugin;
 import org.elasticsearch.plugins.Plugin;
 import org.example.es.plugins.chosung.ChosungTokenFilterFactory;
+import org.example.es.plugins.splitjamo.SplitJamoTokenFilter;
 import org.example.es.plugins.jamo.JamoTokenFilterFactory;
 
 import java.util.HashMap;
@@ -18,6 +19,7 @@ public class ESPlugins extends Plugin implements AnalysisPlugin {
 
         extra.put("chosung", ChosungTokenFilterFactory::new);
         extra.put("jamo", JamoTokenFilterFactory::new);
+        extra.put("split-jamo", SplitJamoTokenFilter::new);
 
         return extra;
     }
